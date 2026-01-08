@@ -148,16 +148,28 @@ def make_plotly_chart(df, preds_aligned, pred_future_price, symbol):
 
     # Layout dark theme
     fig.update_layout(
-        template=None,
-        plot_bgcolor=DARK_BG,
-        paper_bgcolor=DARK_BG,
-        font=dict(color=TEXT),
-        legend=dict(bgcolor="rgba(0,0,0,0)"),
-        margin=dict(l=10, r=10, t=40, b=40),
-        xaxis=dict(showgrid=False, zeroline=False, showspikes=True, spikemode="across", spikesnap="cursor"),
-        yaxis=dict(showgrid=True, gridcolor="#1f2a33", zeroline=False),
-        yaxis2=dict(overlaying="y", side="right", showgrid=False, title="Volume")
+    template=None,
+    plot_bgcolor=DARK_BG,
+    paper_bgcolor=DARK_BG,
+    font=dict(color=TEXT),
+    legend=dict(bgcolor="rgba(0,0,0,0)"),
+    margin=dict(l=80, r=40, t=40, b=40),  # 👈 MORE SPACE ON LEFT
+    xaxis=dict(showgrid=False, zeroline=False, showspikes=True, spikemode="across", spikesnap="cursor"),
+    yaxis=dict(
+        showgrid=True,
+        gridcolor="#1f2a33",
+        zeroline=False,
+        automargin=True,        # 👈 IMPORTANT
+        tickformat=",.2f"       # 👈 Proper numeric formatting
+    ),
+    yaxis2=dict(
+        overlaying="y",
+        side="right",
+        showgrid=False,
+        title="Volume",
+        automargin=True
     )
+)
 
     fig.update_xaxes(
         rangeslider=dict(visible=False),
